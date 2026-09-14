@@ -1,31 +1,10 @@
 
 
+import sys
 
-class Stack:
-  def __init__(self,arr=[]):
-    self._items = arr
 
-  def pop(self):
-    return self._items.pop()
-
-  def push(self,item):
-    self._items.append(item)
-
-  def peek(self):
-    return self._items[-1]
-
-  def isEmpty(self):
-    return len(self._items) == 0
-
-  def show(self):
-    return self._items
-
-  @property
-  def length(self):
-    return len(self._items)
-
-class Queue(): # problem specific return system
-  def __init__(self, arr = []):
+class Queue():
+  def __init__(self, arr):
     self._items = arr
 
   def push(self, n):
@@ -57,3 +36,32 @@ class Queue(): # problem specific return system
     else: 
       return 'error'
   
+
+  
+
+  
+
+
+
+def main():
+  q = Queue([])
+  n = input()
+  while n != "exit":
+    if n.startswith("push"):
+      print(q.push(int(n.split(' ')[1])))
+    elif n == "size":
+      print(q.size)
+    elif n == "front":
+      print(q.front)
+    elif n == "clear":
+      print(q.clear())
+    elif n == "pop":
+      print(q.pop())
+
+    # print(q.items)
+    n = input()
+  print("bye")
+    
+
+if __name__ == '__main__':
+  main()
