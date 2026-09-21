@@ -14,5 +14,5 @@ def move(a,b,n):
 
 
 if __name__ == "__main__":
-  n = 2
+  n = int(input())
   move(1,3, n)

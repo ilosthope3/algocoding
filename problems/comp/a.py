@@ -18,6 +18,8 @@ def main(k, arr):
       if county > 0:
         r += min(count, county)
   print(r)
+
+
 if __name__ == "__main__":
   inp = input().split(' ')
   n = int(inp[0])

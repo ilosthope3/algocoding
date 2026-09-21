@@ -2,6 +2,7 @@
 
 def main(s):
   k = s.count("/")
+  if k == 0: return "Impossible"
   if s.count("<") != 2*k:
     return "Impossible"
   if s.count(">") != 2*k:

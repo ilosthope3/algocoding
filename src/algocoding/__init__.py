@@ -95,3 +95,109 @@ class Deque():
   @property
   def items(self):
     return self._items
+
+class MaxHeap():
+  def __init__(self, arr=None):
+    self._items = [] if arr == None else sorted(arr)
+
+  def pop(self):
+    return self._items.pop()
+  
+  @property
+  def length(self):
+    return len(self._items)
+
+  @property
+  def front(self):
+    if self.length != 0:
+      return self._items[-1]
+    else: 
+      return None
+
+  @property
+  def items(self):
+    return self._items
+
+  @property
+  def min(self):
+    return self._items[0]
+
+  def push(self, n):
+
+    def findIndex(l,r):
+      if l == r:
+        return l
+      else:
+        m = (l+r)//2
+        if n <= self._items[m]:
+          return findIndex(l, m)
+        else:
+          return findIndex(m+1,r)
+
+    i = findIndex(0,self.length)
+
+    self._items.insert(i, n)
+
+class MinHeap(): 
+  def __init__(self, arr=None):
+    self._items = [] if arr == None else arr
+
+  def pop(self):
+    if self.length > 0:
+      res = self._items[0]
+      curr = self._items.pop()
+      if self.length == 0:
+        return res
+      i = 0
+      while True:
+        l = 2 * i + 1
+        r = l + 1 
+        c = l
+        
+        if l >= self.length:
+          break
+
+        if r < self.length and self._items[r] < self._items[l]:
+          c = r
+
+        if self._items[c] >= curr:
+          break
+
+        self._items[i] = self._items[c]
+        i = c
+
+      self._items[i] = curr
+
+      return res
+    return None
+  
+  @property
+  def length(self):
+    return len(self._items)
+
+  @property
+  def front(self):
+    if self.length != 0:
+      return self._items[0]
+    else: 
+      return None
+
+  @property
+  def items(self):
+    return self._items
+
+  def push(self, n):
+    self._items.append(n)
+
+    i = self.length - 1
+
+    while i > 0:
+      par = (i - 1) // 2
+      if self._items[par] <= n:
+        break
+
+      self._items[i] = self._items[par]
+      i = par
+
+    self._items[i] = n
+    

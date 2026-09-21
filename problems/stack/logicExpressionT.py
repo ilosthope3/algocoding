@@ -51,5 +51,5 @@ def main(s):
 
 
 if __name__ == '__main__':
-  s = "1|(0&0^1)"
+  s = input()
   main(s)
